@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppeklokke</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
+    <script>
+        let app = document.getElementById("app");
+
+        let header = document.createElement("h1");
+        header.innerHTML = "Stoppeklokke";
+        header.innerHTML += '<i class="fas fa-stopwatch"></i>';
+
+        app.appendChild(header);
+
+        let buttonArray = ["Start", "Restart"];
+
+        for (let i = 0; i < buttonArray.length; i++) {
+            const btn = document.createElement('button');
+            btn.innerHTML = buttonArray[i];
+            
+            btn.onclick = startStop => { // start, stop, reset
+                if(buttonArray[i] === "Start"){ // Hvis du trykker på start, så starter timeren.. og legge til stop tekst istedenfor
+                    buttonArray[i] = "Stop";
+                    // STOP TIMER
+                } else {
+                    buttonArray[0] = "Start";
+                    // START TIMER
+                }
+                btn.innerHTML = buttonArray[i];
+            }
+            app.appendChild(btn);
+        }
+        let ms;
+        let s;
+        let m;
+
+        let msDisplay;
+        let sDisplay;
+        let mDisplay;
+
+        let interval = null;
+
+        let status = "stopped"
+
+         stopWatch =>   {
+            ms++;
+
+            if (ms/ 60 === 1) {
+                ms = 0;
+                s++;
+            }
+            if (s/ 60 === 0) {
+                s = 0;
+                m++;
+
+            }
+        }
+
+            if (ms < 10) {
+                msDisplay ="0" + ms.tostring();
+            } else {
+                msDisplay = s;
+            }
+
+            if (s < 10) {
+                sDisplay = "0" + s.tostring();
+            } else {
+                sDisplay = m;
+            }
+
+            if (m < 10) {
+                mDisplay = "0" + m.tostring();
+            } else {
+                mDisplay = m;
+            }
+
+
+
+    </script>
+</body>
+
+</html>
